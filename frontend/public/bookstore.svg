@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" fill="#f3f4f6"/>
+  
+  <!-- Bookshelf -->
+  <rect x="50" y="50" width="500" height="300" fill="#8b4513" stroke="#000" stroke-width="2"/>
+  
+  <!-- Shelves -->
+  <line x1="50" y1="150" x2="550" y2="150" stroke="#000" stroke-width="2"/>
+  <line x1="50" y1="250" x2="550" y2="250" stroke="#000" stroke-width="2"/>
+  
+  <!-- Books -->
+  <g fill="#e5e7eb">
+    <!-- First shelf books -->
+    <rect x="70" y="60" width="40" height="80" fill="#ef4444"/>
+    <rect x="120" y="60" width="40" height="80" fill="#3b82f6"/>
+    <rect x="170" y="60" width="40" height="80" fill="#10b981"/>
+    <rect x="220" y="60" width="40" height="80" fill="#f59e0b"/>
+    <rect x="270" y="60" width="40" height="80" fill="#8b5cf6"/>
+    <rect x="320" y="60" width="40" height="80" fill="#ec4899"/>
+    <rect x="370" y="60" width="40" height="80" fill="#6366f1"/>
+    <rect x="420" y="60" width="40" height="80" fill="#14b8a6"/>
+    <rect x="470" y="60" width="40" height="80" fill="#f97316"/>
+    
+    <!-- Second shelf books -->
+    <rect x="70" y="160" width="40" height="80" fill="#dc2626"/>
+    <rect x="120" y="160" width="40" height="80" fill="#2563eb"/>
+    <rect x="170" y="160" width="40" height="80" fill="#059669"/>
+    <rect x="220" y="160" width="40" height="80" fill="#d97706"/>
+    <rect x="270" y="160" width="40" height="80" fill="#7c3aed"/>
+    <rect x="320" y="160" width="40" height="80" fill="#db2777"/>
+    <rect x="370" y="160" width="40" height="80" fill="#4f46e5"/>
+    <rect x="420" y="160" width="40" height="80" fill="#0d9488"/>
+    <rect x="470" y="160" width="40" height="80" fill="#ea580c"/>
+    
+    <!-- Third shelf books -->
+    <rect x="70" y="260" width="40" height="80" fill="#b91c1c"/>
+    <rect x="120" y="260" width="40" height="80" fill="#1d4ed8"/>
+    <rect x="170" y="260" width="40" height="80" fill="#047857"/>
+    <rect x="220" y="260" width="40" height="80" fill="#b45309"/>
+    <rect x="270" y="260" width="40" height="80" fill="#6d28d9"/>
+    <rect x="320" y="260" width="40" height="80" fill="#be185d"/>
+    <rect x="370" y="260" width="40" height="80" fill="#4338ca"/>
+    <rect x="420" y="260" width="40" height="80" fill="#0f766e"/>
+    <rect x="470" y="260" width="40" height="80" fill="#c2410c"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="300" y="30" font-family="Arial" font-size="24" text-anchor="middle" fill="#1f2937">
+    Welcome to Our Bookstore
+  </text>
+</svg> 
