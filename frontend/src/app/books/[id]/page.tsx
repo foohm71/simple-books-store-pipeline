@@ -76,28 +76,29 @@ export default function BookDetails({ params }: { params: { id: string } }) {
           <div className="space-y-4">
             <div>
               <h2 className="text-lg font-medium text-gray-900 dark:text-white">Name</h2>
-              <p className="text-gray-600 dark:text-gray-300">{book.name}</p>
+              <p data-testid="name" className="text-gray-600 dark:text-gray-300">{book.name}</p>
             </div>
             <div>
               <h2 className="text-lg font-medium text-gray-900 dark:text-white">Author</h2>
-              <p className="text-gray-600 dark:text-gray-300">{book.author}</p>
+              <p data-testid="author" className="text-gray-600 dark:text-gray-300">{book.author}</p>
             </div>
             <div>
               <h2 className="text-lg font-medium text-gray-900 dark:text-white">ISBN</h2>
-              <p className="text-gray-600 dark:text-gray-300">{book.isbn}</p>
+              <p data-testid="isbn" className="text-gray-600 dark:text-gray-300">{book.isbn}</p>
             </div>
             <div>
               <h2 className="text-lg font-medium text-gray-900 dark:text-white">Price</h2>
-              <p className="text-gray-600 dark:text-gray-300">${book.price}</p>
+              <p data-testid="price" className="text-gray-600 dark:text-gray-300">${book.price}</p>
             </div>
             <div>
               <h2 className="text-lg font-medium text-gray-900 dark:text-white">Current Stock</h2>
-              <p className="text-gray-600 dark:text-gray-300">{book['current-stock']}</p>
+              <p data-testid="current-stock" className="text-gray-600 dark:text-gray-300">{book['current-stock']}</p>
             </div>
           </div>
 
           <button
             onClick={handleOrderClick}
+            data-testid="order-book-button"
             className="mt-8 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors dark:bg-blue-500 dark:hover:bg-blue-600"
           >
             Order this book

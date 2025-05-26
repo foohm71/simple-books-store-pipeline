@@ -1,6 +1,6 @@
 import { Book, Order } from '@/types/api';
 
-const API_BASE_URL = '/api/proxy'; // Changed to use our local proxy
+const API_BASE_URL = '/api/proxy';
 
 export const api = {
   async getBooks(type?: 'fiction' | 'non-fiction'): Promise<Book[]> {

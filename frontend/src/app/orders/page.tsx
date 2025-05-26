@@ -48,6 +48,7 @@ export default function Orders() {
             {orders.map((order) => (
               <div
                 key={order.id}
+                data-testid="order-card"
                 className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
                 <div className="flex justify-between items-start">
@@ -70,6 +71,7 @@ export default function Orders() {
                   </div>
                   <Link
                     href={`/orders/${order.id}`}
+                    data-testid="view-details-link"
                     className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-500 dark:hover:bg-blue-600"
                   >
                     View Details

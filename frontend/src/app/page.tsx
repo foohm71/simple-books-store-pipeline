@@ -55,6 +55,7 @@ export default function Home() {
           </label>
           <select
             id="bookType"
+            data-testid="book-type-select"
             value={bookType || ''}
             onChange={(e) => setBookType(e.target.value as 'fiction' | 'non-fiction' | undefined)}
             className="block w-full max-w-xs rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
@@ -70,21 +71,23 @@ export default function Home() {
         ) : error ? (
           <div className="text-center text-red-600 dark:text-red-400">{error}</div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div data-testid="books-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {books.map((book) => (
               <div
                 key={book.id}
+                data-testid="book-card"
                 className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
               >
                 <div className="p-6">
-                  <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{book.name}</h2>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">Type: {book.type}</p>
+                  <h2 data-testid="name" className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{book.name}</h2>
+                  <p data-testid="author" className="text-gray-600 dark:text-gray-300 mb-4">Type: {book.type}</p>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                    <span data-testid="current-stock" className="text-sm text-gray-500 dark:text-gray-400">
                       Stock: {book['current-stock']}
                     </span>
                     <Link
                       href={`/books/${book.id}`}
+                      data-testid="view-details-link"
                       className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-500 dark:hover:bg-blue-600"
                     >
                       View Details
@@ -99,6 +102,7 @@ export default function Home() {
         <div className="mt-12 text-center">
           <Link
             href="/orders"
+            data-testid="view-orders-link"
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:bg-green-500 dark:hover:bg-green-600"
           >
             View Orders

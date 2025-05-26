@@ -45,6 +45,7 @@ export default function OrderPage({ params }: { params: { id: string } }) {
               <input
                 type="text"
                 id="customerName"
+                data-testid="customer-name-input"
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
                 required
@@ -55,6 +56,7 @@ export default function OrderPage({ params }: { params: { id: string } }) {
 
             <button
               type="submit"
+              data-testid="submit-order-button"
               disabled={loading}
               className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors disabled:bg-blue-400 dark:bg-blue-500 dark:hover:bg-blue-600 dark:disabled:bg-blue-400"
             >

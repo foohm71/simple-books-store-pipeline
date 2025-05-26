@@ -94,23 +94,23 @@ export default function OrderDetails({ params }: { params: { id: string } }) {
           <div className="space-y-4">
             <div>
               <h2 className="text-lg font-medium text-gray-900 dark:text-white">Order ID</h2>
-              <p className="text-gray-600 dark:text-gray-300">{order.id}</p>
+              <p data-testid="order-id" className="text-gray-600 dark:text-gray-300">{order.id}</p>
             </div>
             <div>
               <h2 className="text-lg font-medium text-gray-900 dark:text-white">Customer Name</h2>
-              <p className="text-gray-600 dark:text-gray-300">{order.customerName}</p>
+              <p data-testid="customer-name" className="text-gray-600 dark:text-gray-300">{order.customerName}</p>
             </div>
             <div>
               <h2 className="text-lg font-medium text-gray-900 dark:text-white">Book Name</h2>
-              <p className="text-gray-600 dark:text-gray-300">{order.bookName}</p>
+              <p data-testid="book-name" className="text-gray-600 dark:text-gray-300">{order.bookName}</p>
             </div>
             <div>
               <h2 className="text-lg font-medium text-gray-900 dark:text-white">Quantity</h2>
-              <p className="text-gray-600 dark:text-gray-300">{order.quantity}</p>
+              <p data-testid="quantity" className="text-gray-600 dark:text-gray-300">{order.quantity}</p>
             </div>
             <div>
               <h2 className="text-lg font-medium text-gray-900 dark:text-white">Order Date</h2>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p data-testid="order-date" className="text-gray-600 dark:text-gray-300">
                 {new Date(order.timestamp).toLocaleDateString()}
               </p>
             </div>
@@ -118,6 +118,7 @@ export default function OrderDetails({ params }: { params: { id: string } }) {
 
           <button
             onClick={handleDelete}
+            data-testid="delete-order-button"
             disabled={deleting}
             className="mt-8 w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors disabled:bg-red-400 dark:bg-red-500 dark:hover:bg-red-600 dark:disabled:bg-red-400"
           >

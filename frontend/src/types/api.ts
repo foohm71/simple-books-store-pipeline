@@ -12,7 +12,7 @@ export interface Order {
   id: string;
   bookId: number;
   customerName: string;
-  createdBy: string;
+  createdBy?: string;
   quantity: number;
   timestamp: string;
 }
