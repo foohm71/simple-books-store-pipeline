@@ -17,10 +17,14 @@
   "devDependencies": {
     "@playwright/test": "^1.42.1",
     "@types/node": "^20.11.24",
-    "checkly": "^5.4.0",
-    "typescript": "^5.3.3"
+    "checkly": "^5.4.1",
+    "jiti": "^2.4.2",
+    "sonar-scanner": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.7",
     "dotenv": "^16.5.0"
   }
 }
