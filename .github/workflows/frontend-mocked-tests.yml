@@ -42,8 +42,15 @@ jobs:
         shell: bash
 
       - name: Wait for servers to be ready
-        run: |
-          npx wait-on http://localhost:4010 http://localhost:3000
+        run: npx wait-on --timeout 120000 http://localhost:4010 http://localhost:3000
+
+      - name: Print frontend log if wait-on fails
+        if: failure()
+        run: cat frontend.log || true
+
+      - name: Print prism log if wait-on fails
+        if: failure()
+        run: cat prism.log || true
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
