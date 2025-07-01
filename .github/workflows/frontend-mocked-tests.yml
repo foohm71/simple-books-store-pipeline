@@ -31,7 +31,7 @@ jobs:
         run: |
           npx prism mock api/mock-server/swagger.yaml -p 4010 > prism.log 2>&1 &
           echo $! > prism.pid
-          curl http://localhost:4010/status
+          curl --connect-timeout 60 http://localhost:4010/status
         shell: bash
 
       - name: Prepare and start frontend
@@ -40,7 +40,7 @@ jobs:
           mv .env.mock-server .env
           npm run dev > ../frontend.log 2>&1 &
           echo $! > ../frontend.pid
-          curl http://localhost:3000
+          curl --connect-timeout 60 http://localhost:3000
         shell: bash
 
       - name: Wait for servers to be ready
