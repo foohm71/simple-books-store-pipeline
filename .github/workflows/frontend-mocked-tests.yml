@@ -1,0 +1,65 @@
+name: Playwright Tests (Mocked)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies (frontend)
+        run: npm ci
+        working-directory: ./frontend
+
+      - name: Install Prism CLI and wait-on
+        run: npm install -g @stoplight/prism-cli wait-on
+
+      - name: Start mock server
+        run: |
+          npx prism mock api/mock-server/swagger.yaml -p 4010 > prism.log 2>&1 &
+          echo $! > prism.pid
+        shell: bash
+
+      - name: Prepare and start frontend
+        run: |
+          cd frontend
+          mv .env.mock-server .env
+          npm run dev > ../frontend.log 2>&1 &
+          echo $! > ../frontend.pid
+        shell: bash
+
+      - name: Wait for servers to be ready
+        run: |
+          npx wait-on http://localhost:4010 http://localhost:3000
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npx playwright test tests/frontend/mocked-tests/books-store.spec.ts
+
+      - name: Stop frontend and mock server
+        if: always()
+        run: |
+          if [ -f frontend.pid ]; then
+            kill $(cat frontend.pid) || true
+            rm frontend.pid
+          fi
+          if [ -f prism.pid ]; then
+            kill $(cat prism.pid) || true
+            rm prism.pid
+          fi
+        shell: bash 
