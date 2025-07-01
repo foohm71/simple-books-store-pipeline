@@ -44,10 +44,12 @@ jobs:
       - name: Wait for servers to be ready
         run: npx wait-on --timeout 120000 http://localhost:4020 http://localhost:3000
 
-      - name: curl mock server
+      - name: curl mock server if wait-on fails
+        if: failure()
         run: curl --connect-timeout 60 http://localhost:4020/status
 
-      - name: curl frontend
+      - name: curl frontend if wait-on fails
+        if: failure()
         run: curl --connect-timeout 60 http://localhost:3000
 
       - name: Print frontend log if wait-on fails
