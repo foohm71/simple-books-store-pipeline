@@ -23,7 +23,7 @@ export const api = {
       console.log('Received books data:', data);
       
       // Transform the API response to match our interface
-      return data.map((book: any) => ({
+      return data.map((book: { id: number; name: string; available: boolean; type: 'fiction' | 'non-fiction' }) => ({
         id: book.id,
         name: book.name,
         author: 'Unknown', // API doesn't provide author
