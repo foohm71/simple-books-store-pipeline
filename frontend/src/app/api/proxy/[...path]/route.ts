@@ -9,16 +9,17 @@ if (!ACCESS_TOKEN) {
 
 export async function GET(
   request: NextRequest,
-  context: { params: { path: string[] } }
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
-  const path = context.params.path.join('/');
+  const { path } = await params;
+  const joinedPath = path.join('/');
   const searchParams = request.nextUrl.searchParams.toString();
-  const url = `${API_BASE_URL}/${path}${searchParams ? `?${searchParams}` : ''}`;
+  const url = `${API_BASE_URL}/${joinedPath}${searchParams ? `?${searchParams}` : ''}`;
 
   try {
     // Add authorization header for orders endpoint
     const headers: HeadersInit = {};
-    if (path.startsWith('orders')) {
+    if (joinedPath.startsWith('orders')) {
       headers['Authorization'] = `Bearer ${ACCESS_TOKEN}`;
     }
 
@@ -36,10 +37,11 @@ export async function GET(
 
 export async function POST(
   request: NextRequest,
-  context: { params: { path: string[] } }
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
-  const path = context.params.path.join('/');
-  const url = `${API_BASE_URL}/${path}`;
+  const { path } = await params;
+  const joinedPath = path.join('/');
+  const url = `${API_BASE_URL}/${joinedPath}`;
   const body = await request.json();
 
   try {
@@ -74,10 +76,11 @@ export async function POST(
 
 export async function DELETE(
   request: NextRequest,
-  context: { params: { path: string[] } }
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
-  const path = context.params.path.join('/');
-  const url = `${API_BASE_URL}/${path}`;
+  const { path } = await params;
+  const joinedPath = path.join('/');
+  const url = `${API_BASE_URL}/${joinedPath}`;
 
   try {
     const response = await fetch(url, {
