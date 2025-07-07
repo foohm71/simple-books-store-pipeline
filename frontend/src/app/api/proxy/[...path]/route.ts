@@ -9,9 +9,9 @@ if (!ACCESS_TOKEN) {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  context: { params: { path: string[] } }
 ) {
-  const path = params.path.join('/');
+  const path = context.params.path.join('/');
   const searchParams = request.nextUrl.searchParams.toString();
   const url = `${API_BASE_URL}/${path}${searchParams ? `?${searchParams}` : ''}`;
 
@@ -36,9 +36,9 @@ export async function GET(
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  context: { params: { path: string[] } }
 ) {
-  const path = params.path.join('/');
+  const path = context.params.path.join('/');
   const url = `${API_BASE_URL}/${path}`;
   const body = await request.json();
 
@@ -74,9 +74,9 @@ export async function POST(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  context: { params: { path: string[] } }
 ) {
-  const path = params.path.join('/');
+  const path = context.params.path.join('/');
   const url = `${API_BASE_URL}/${path}`;
 
   try {
